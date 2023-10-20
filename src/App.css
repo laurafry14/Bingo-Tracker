@@ -95,9 +95,15 @@ input {
   padding: 5px;
 }
 
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
 .button-row {
   background-color: #4e4e4e;
-  margin: 10px 5px;
+  margin: 0 5px 40px;
 }
 
 .not-clicked {

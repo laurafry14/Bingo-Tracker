@@ -30,7 +30,6 @@ const Body = ({ sharedValue }) => {
 
   return (
     <div className="body">
-      <div>Shared Value: {sharedValue}</div>
       <div className="row-container">
         <div className="button-container">
           {Array.from({ length: totalRows }, (_, rowIndex) => (
