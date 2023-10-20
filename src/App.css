@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Red+Rose:wght@600&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Red Rose", cursive;
+}
+
+/* App */
+.body-wrapper {
+  display: flex;
+}
+
+/* Header */
+.header {
+  color: #383838;
+  padding-left: 8px;
+}
+
+/* Sidebar */
+.sidebar {
+  background-color: #2472ba;
+  width: 340px;
+  height: 475px;
+  padding: 5px;
+  color: white;
+}
+
+.detail-cards-wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.stats-container {
+  text-align: center;
+  width: 150px;
+  background-color: #383838;
+  height: 164px;
+}
+
+.stats-header {
+  margin: 10px;
+}
+
+.data {
+  background-color: #282828;
+  margin: 10px;
+  height: 74px;
+  font-size: 48px;
+  padding-top: 5px;
+}
+
+.number-called-container {
+  text-align: center;
+  padding-top: 25px;
+}
+
+input {
+  padding: 10px;
+  width: 300px;
+  margin: 10px;
+  text-align: center;
+  border-radius: 3px;
+  border: none;
+  font-size: large;
+}
+
+/* Bingo */
+.bingo-container {
+  height: 475px;
+  color: #383838;
+}
+
+.bingo {
+  font-size: 80px;
+  height: 95px;
+  text-align: center;
+}
+
+/* Body */
+.body {
+  width: 850px;
+  height: 475px;
+  background-color: #383838;
+  display: flex;
+  flex-direction: column;
+  padding: 5px 0;
+  margin: 0;
+}
+
+.row-container {
+  margin: 15px;
+  padding: 5px;
+}
+
+.button-row {
+  background-color: #4e4e4e;
+  margin: 10px 5px;
+}
+
+.not-clicked {
+  background-color: transparent;
+  border: none;
+  font-size: 35px;
+  margin: 5px;
+  color: #747474;
+}
+
+.clicked {
+  background-color: transparent;
+  border: none;
+  font-size: 35px;
+  margin: 5px;
+  color: white;
+}
+
+.matching {
+  background-color: transparent;
+  border: none;
+  font-size: 35px;
+  margin: 5px;
+  color: white;
+}
+
+button:hover {
+  cursor: pointer;
+}
