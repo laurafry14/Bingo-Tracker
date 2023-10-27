@@ -5,22 +5,38 @@ const Sidebar = ({ onValueChange }) => {
   const [entryCount, setEntryCount] = useState(0);
   const [inputValue, setInputValue] = useState("");
   const [previousEntry, setPreviousEntry] = useState(null);
+  const [usedNumbers, setUsedNumbers] = useState([]);
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
-    onValueChange(e.target.value); // Pass the value to the parent
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleAddItem();
+      onValueChange(e.target.value); // Passes the value to the parent
+    }
   };
 
   const handleAddItem = () => {
     if (inputValue) {
-      const numberValue = parseInt(inputValue, 10); // Parse the input as an integer
-      if (!isNaN(numberValue) && numberValue >= 1 && numberValue <= 75) {
-        setPreviousEntry(numberValue); // Store the previous entry as a number
+      const numberValue = parseInt(inputValue, 10);
+      if (
+        !isNaN(numberValue) &&
+        numberValue >= 1 &&
+        numberValue <= 75 &&
+        !usedNumbers.includes(numberValue)
+      ) {
+        setPreviousEntry(numberValue);
         setEntryCount(entryCount + 1);
         setInputValue("");
+        setUsedNumbers([...usedNumbers, numberValue]);
       } else {
-        // Handle invalid input or out-of-range input
-        alert("Please enter a valid number between 1 and 75.");
+        if (usedNumbers.includes(numberValue)) {
+          alert(numberValue + " has already been called");
+        } else {
+          alert("Please enter a valid number between 1 and 75.");
+        }
       }
     }
   };
@@ -49,8 +65,8 @@ const Sidebar = ({ onValueChange }) => {
           max="75"
           value={inputValue}
           onChange={handleInputChange}
+          onKeyPress={handleKeyPress}
         />
-        <button onClick={handleAddItem}>Enter</button>
       </div>
     </div>
   );
