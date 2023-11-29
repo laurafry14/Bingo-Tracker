@@ -8,9 +8,16 @@ import { useState } from "react";
 
 function App() {
   const [sharedValue, setSharedValue] = useState("");
+  const [undoValue, setUndoValue] = useState(null);
 
   const handleValueChange = (newValue) => {
-    setSharedValue(newValue);
+    if (newValue.isUndo) {
+      setUndoValue(newValue.newValue);
+      console.log("hello");
+    } else {
+      setSharedValue(newValue);
+    }
+    // setSharedValue(newValue);
   };
 
   return (
@@ -25,7 +32,7 @@ function App() {
             <Bingo />
           </div>
           <div>
-            <Body sharedValue={sharedValue} />
+            <Body sharedValue={sharedValue} undoValue={undoValue} />
           </div>
         </div>
       </div>

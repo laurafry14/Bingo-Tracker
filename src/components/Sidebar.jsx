@@ -6,6 +6,7 @@ const Sidebar = ({ onValueChange }) => {
   const [inputValue, setInputValue] = useState("");
   const [previousEntry, setPreviousEntry] = useState(null);
   const [usedNumbers, setUsedNumbers] = useState([]);
+  const [undoStack, setUndoStack] = useState([]);
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
@@ -27,6 +28,7 @@ const Sidebar = ({ onValueChange }) => {
         numberValue <= 75 &&
         !usedNumbers.includes(numberValue)
       ) {
+        setUndoStack([...undoStack, { previousEntry, usedNumbers }]);
         setPreviousEntry(numberValue);
         setEntryCount(entryCount + 1);
         setInputValue("");
@@ -38,6 +40,18 @@ const Sidebar = ({ onValueChange }) => {
           alert("Please enter a valid number between 1 and 75.");
         }
       }
+    }
+  };
+
+  const handleUndo = () => {
+    if (undoStack.length > 0) {
+      const { previousEntry: prevEntry, usedNumbers: prevUsedNumbers } =
+        undoStack.pop();
+      setPreviousEntry(prevEntry);
+      setEntryCount(entryCount - 1);
+      setUsedNumbers(prevUsedNumbers);
+
+      onValueChange({ value: prevEntry, isUndo: true });
     }
   };
 
@@ -67,6 +81,11 @@ const Sidebar = ({ onValueChange }) => {
           onChange={handleInputChange}
           onKeyPress={handleKeyPress}
         />
+      </div>
+      <div className="undo-btn-container">
+        <button className="undo-btn" onClick={handleUndo}>
+          Undo
+        </button>
       </div>
     </div>
   );

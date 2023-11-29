@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import NumberRow from "./NumberRow";
 
-const Body = ({ sharedValue }) => {
+const Body = ({ sharedValue, undoValue }) => {
   const totalButtons = 75;
   const buttonsPerRow = 15;
   const totalRows = Math.ceil(totalButtons / buttonsPerRow);
+
+  const initialButtonStates = new Array(totalButtons).fill(false);
   const [buttonStates, setButtonStates] = useState(
     new Array(totalButtons).fill(false)
   );
@@ -27,6 +29,12 @@ const Body = ({ sharedValue }) => {
       })
     );
   }, [sharedValue]);
+
+  useEffect(() => {
+    if (undoValue !== undefined) {
+      setButtonStates(initialButtonStates);
+    }
+  }, [undoValue]);
 
   return (
     <div className="body">

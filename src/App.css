@@ -67,6 +67,16 @@ input {
   font-size: large;
 }
 
+.undo-btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+.undo-btn {
+  padding: 5px 10px;
+  margin: 5px;
+}
+
 /* Bingo */
 .bingo-container {
   height: 475px;
